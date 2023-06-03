@@ -3,11 +3,12 @@ import { Navigate, useRoutes } from 'react-router-dom';
 import DashboardLayout from './layouts/dashboard';
 import SimpleLayout from './layouts/simple';
 //
-import BlogPage from './pages/BlogPage';
-import UserPage from './pages/UserPage';
+import CategoryRegister from './pages/CategoryRegister';
+import CategoryPage from './pages/CategoryPage';
 import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
-import ProductsPage from './pages/ProductsPage';
+import ProductPage from './pages/ProductPage';
+import ProductRegister from './pages/ProductRegister';
 import DashboardAppPage from './pages/DashboardAppPage';
 
 // ----------------------------------------------------------------------
@@ -20,9 +21,24 @@ export default function Router() {
       children: [
         { element: <Navigate to="/dashboard/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
-        { path: 'user', element: <UserPage /> },
-        { path: 'products', element: <ProductsPage /> },
-        { path: 'blog', element: <BlogPage /> },
+      ],
+    },
+    {
+      path: '/category',
+      element: <DashboardLayout />,
+      children: [
+        { element: <Navigate to="/dashboard/app" />, index: true },
+        { path: 'all', element: <CategoryPage /> },
+        { path: 'register', element: <CategoryRegister /> },
+      ],
+    },
+    {
+      path: '/product',
+      element: <DashboardLayout />,
+      children: [
+        { element: <Navigate to="/dashboard/app" />, index: true },
+        { path: 'all', element: <ProductPage /> },
+        { path: 'register', element: <ProductRegister /> },
       ],
     },
     {
